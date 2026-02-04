@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tiger 🐯💖</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(180deg,#ffe6f2,#fff);
+  font-family:'Comic Sans MS', Arial;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.screen{
+  background:white;
+  width:320px;
+  padding:25px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 18px 35px rgba(0,0,0,.25);
+  z-index:2;
+}
+
+.hidden{display:none;}
+
+.cat{
+  font-size:3rem;
+  animation:wobble 1.2s infinite;
+}
+
+button{
+  width:90%;
+  padding:14px;
+  margin:10px 0;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+.yes{background:#ff4f81;color:white;}
+.no{background:#ffd1e6;color:#ff4f81;}
+
+.sparkle{
+  position:absolute;
+  font-size:1.4rem;
+  animation:float 4s linear infinite;
+  opacity:0.9;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+@keyframes wobble{
+  0%,100%{transform:rotate(0deg);}
+  50%{transform:rotate(5deg);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen" id="s1">
+  <div class="cat">🐱👋</div>
+  <h2>Hi Tiger 🐯</h2>
+  <p>The cats noticed your arrival.</p>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen hidden" id="s2">
+  <div class="cat">🐱⚙️🐱</div>
+  <h3>Something is being prepared for you…</h3>
+  <p>Please wait.<br>The cats are working.</p>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen hidden" id="s3">
+  <div class="cat">🐱💖🐱</div>
+  <h3>Aryan aka Pookie 😽</h3>
+  <p>After intense cat discussion…</p>
+  <h2>Will you be my Valentine? 💘</h2>
+
+  <button class="yes" onclick="yes()">YES POOKIE 😭💖</button>
+  <button class="no" onclick="alert('The cats reject this answer 😾')">NO 🙀</button>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="screen hidden" id="s4">
+  <div class="cat">🐱🎉🐱</div>
+  <h2>HE SAID YES 😭✨</h2>
+
+  <div style="font-size:1.1rem; color:#ff4f81; margin:10px 0;">
+    ✅ meow meow approved
+  </div>
+
+  <p>
+    Congratulations Tiger,<br>
+    you are officially my Valentine 💞<br><br>
+    I love you endlessly, pookie 😽✨
+  </p>
+
+  <button class="yes" onclick="replay()">Replay 🔁</button>
+</div>
+
+<script>
+const s1=document.getElementById("s1");
+const s2=document.getElementById("s2");
+const s3=document.getElementById("s3");
+const s4=document.getElementById("s4");
+
+/* sparkles */
+setInterval(()=>{
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.innerText=["✨","💖","💫","🐾","😽"][Math.floor(Math.random()*5)];
+  s.style.left=Math.random()*100+"vw";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),4000);
+},500);
+
+/* screen flow */
+setTimeout(()=>{
+  s1.classList.add("hidden");
+  s2.classList.remove("hidden");
+},2000);
+
+setTimeout(()=>{
+  s2.classList.add("hidden");
+  s3.classList.remove("hidden");
+},4500);
+
+function yes(){
+  s3.classList.add("hidden");
+  s4.classList.remove("hidden");
+}
+
+function replay(){
+  s4.classList.add("hidden");
+  s1.classList.remove("hidden");
+
+  setTimeout(()=>{
+    s1.classList.add("hidden");
+    s2.classList.remove("hidden");
+  },2000);
+
+  setTimeout(()=>{
+    s2.classList.add("hidden");
+    s3.classList.remove("hidden");
+  },4500);
+}
+</script>
+
+</body>
+</html>
